@@ -54,6 +54,34 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
           });
         });
   }
+  /// this method is used to load guest session id from server
+  /// which is required to rate movie
+  _loadGuestSessionId(){
+    return ajax(url: "/authentication/guest_session/new",
+        method: "GET",
+        context: context,
+        onValue: (response,url){
+          setState(() {
+            SuperBase.sessionId=response["guest_session_id"];
+          });
+        },error: (s,v){
+        },onEnd: (){
+        });
+  }
+
+  /// this method is used to get youtube trailer if of movie
+  _getYoutubeTrailer(){
+    return ajax(url: "/movie/${widget.movie.id}/videos",
+        method: "GET",
+        context: context,
+        onValue: (response,url){
+          setState(() {
+            SuperBase.youtubeTrailerId=response["results"][0]["key"];
+          });
+        },error: (s,v){
+        },onEnd: (){
+        });
+  }
 
   /// rating star icon
   _buildRateButton(int rateValue) {
@@ -106,6 +134,8 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
   @override
   void initState() {
     _loadMovieDetails();
+    _loadGuestSessionId();
+    _getYoutubeTrailer();
     super.initState();
   }
 
@@ -115,7 +145,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
   Widget build(BuildContext context) {
     return WillPopScope(
       child: Scaffold(
-        body:isLoading?loadBox():_buildDetailBody(context),
+        body:isLoading?Center(child: loadBox()):_buildDetailBody(context),
         floatingActionButton: Consumer<FavouriteProvider>(
             builder: (context, provider, child) {
               return provider.count>0? FloatingActionButton(
@@ -188,7 +218,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                 child: GestureDetector(
                   onTap: () async {
                     final youtubeUrl =
-                        'https://www.youtube.com/embed/${movieDetail?.trailerId}';
+                        'https://www.youtube.com/embed/${SuperBase.youtubeTrailerId}';
                     if (await canLaunch(youtubeUrl)) {
                       await launch(youtubeUrl);
                     }

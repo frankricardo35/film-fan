@@ -10,9 +10,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SuperBase{
 
   final String baseUrl = 'https://api.themoviedb.org/3';
-  final String apiKey = 'api_key=abb567a3b20034b814a0c424bd06a3cb';
+  final String apiKey = 'api_key=<your_api_key>';
 
   static String sessionId='';
+  static String youtubeTrailerId='';
 
   String url(String url) => "$baseUrl$url?$apiKey&guest_session_id=$sessionId";
 

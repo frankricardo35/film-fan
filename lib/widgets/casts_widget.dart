@@ -48,7 +48,7 @@ class _CastsWidgetState extends State<CastsWidget> with SuperBase {
   @override
   Widget build(BuildContext context) {
     return isLoading?loadBox():SizedBox(
-      height: 110,
+      height: 140,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         separatorBuilder: (context, index) =>
@@ -116,17 +116,21 @@ class _CastsWidgetState extends State<CastsWidget> with SuperBase {
                   style: const TextStyle(
                     color: Colors.black54,
                     fontSize: 8,
-                    fontFamily: 'muli',
                   ),
                 ),
               ),
-              Center(
-                child: Text(
-                  cast.character!.toUpperCase(),
-                  style: const TextStyle(
-                    color: Colors.black54,
-                    fontSize: 8,
-                    fontFamily: 'muli',
+              SizedBox(
+                width: 100,
+                child: Center(
+                  child: Text(
+                    cast.character!.toUpperCase(),
+                    style: const TextStyle(
+                      color: Colors.black54,
+                      fontSize: 8,
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),
