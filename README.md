@@ -1,16 +1,19 @@
-# movie_app
+# Film Fan
 
-A new Flutter project.
+Film Fan is a new startup based in Kigali. Their vision is to become the single place for discovering and booking movies in Rwanda. Their
+strategy is to first introduce a mobile app that allows their customers to discover movies they may be interested in.
+
+## Prerequisites
+  .flutter version 3.0.0+
+  .dart version 2.6.0+
+  .ThemovieDB API key
 
 ## Getting Started
+ .Clone the repository from https://github.com/frankricardo35/film-fan.git
+ . cd into the directory and open in android studio.
+ .Go to the project directory and run the following commands:
+    .flutter pub get
+ .Go to the lib folder  and add your api key to the apiKey variable.
+ .Run the following command:
+      .flutter run insure that you have running emulator or device connected to your computer.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
