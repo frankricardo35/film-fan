@@ -15,16 +15,16 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreen> createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SuperBase {
+class HomeScreenState extends State<HomeScreen> with SuperBase {
   bool isLoadingMovieList=true;
   List<Movie> movieList=[];
 
   /// load now playing movie list from api
   /// */
-  Future<void> _loadMovieList(){
+  Future<void> loadMovieList(){
     return ajax(url: "/movie/now_playing",
         method: "GET",
         context: context,
@@ -70,8 +70,9 @@ class _HomeScreenState extends State<HomeScreen> with SuperBase {
   @override
   void initState() {
     getFavouriteMovies();
-    _loadMovieList();
+    loadMovieList();
     super.initState();
+
   }
 
 
@@ -88,12 +89,11 @@ class _HomeScreenState extends State<HomeScreen> with SuperBase {
             color: Colors.black45,
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            fontFamily: 'muli',
           ),
         ),
       ),
       body: Container(
-        margin: const EdgeInsets.only(left: 10,right: 10),
+        margin: const EdgeInsets.only(left: 0,right: 0),
           child:isLoadingMovieList?Center(child: loadBox(),):_buildBody(context)),
       floatingActionButton: Consumer<FavouriteProvider>(
         builder: (context, provider, child) {

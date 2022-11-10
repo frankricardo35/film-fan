@@ -19,7 +19,7 @@ class MovieItem extends StatelessWidget {
         child: Stack(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(0),
               child: CachedNetworkImage(
                 imageUrl:
                 "https://image.tmdb.org/t/p/w500/${movie.posterPath}",

@@ -6,11 +6,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class SuperBase{
 
   final String baseUrl = 'https://api.themoviedb.org/3';
-  final String apiKey = 'api_key=abb567a3b20034b814a0c424bd06a3cb';
+  final String apiKey = dotenv.get('API_KEY');
 
   static String sessionId='';
   static String youtubeTrailerId='';

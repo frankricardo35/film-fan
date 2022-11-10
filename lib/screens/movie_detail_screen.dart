@@ -145,7 +145,13 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
   Widget build(BuildContext context) {
     return WillPopScope(
       child: Scaffold(
-        body:isLoading?Center(child: loadBox()):_buildDetailBody(context),
+        body:isLoading?Center(child: Scaffold(
+          appBar:AppBar(
+            backgroundColor: Colors.transparent,
+            foregroundColor: Colors.black,
+            elevation: 0,
+          ) ,
+            body: Center(child: loadBox()))):_buildDetailBody(context),
         floatingActionButton: Consumer<FavouriteProvider>(
             builder: (context, provider, child) {
               return provider.count>0? FloatingActionButton(
@@ -169,8 +175,8 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
           ClipPath(
             child: ClipRRect(
               borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30),
+                bottomLeft: Radius.circular(0),
+                bottomRight: Radius.circular(0),
               ),
               child: CachedNetworkImage(
                 imageUrl:
@@ -233,7 +239,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                           movieDetail!.title!.toUpperCase(),
                           style: const TextStyle(
                             color: Colors.white,
-                            fontFamily: 'muli',
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -271,16 +276,12 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                         height: 5,
                       ),
                       SizedBox(
-                        height: 35,
                         child: Text(
                           "${movieDetail?.overview}",
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(fontFamily: 'muli'),
                         ),
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 20,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -295,7 +296,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                                     .caption
                                     ?.copyWith(
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: 'muli',
                                 ),
                               ),
                               Text(
@@ -306,7 +306,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                                     ?.copyWith(
                                   color: Colors.yellow[800],
                                   fontSize: 12,
-                                  fontFamily: 'muli',
                                 ),
                               ),
                             ],
@@ -321,7 +320,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                                     .caption
                                     ?.copyWith(
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: 'muli',
                                 ),
                               ),
                               Row(
@@ -357,7 +355,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                                     .caption
                                     ?.copyWith(
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: 'muli',
                                 ),
                               ),
                               Text(
@@ -368,7 +365,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                                     ?.copyWith(
                                   color: Colors.yellow[800],
                                   fontSize: 12,
-                                  fontFamily: 'muli',
                                 ),
                               ),
                             ],
@@ -382,7 +378,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                         'Genres'.toUpperCase(),
                         style: Theme.of(context).textTheme.caption?.copyWith(
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'muli',
                         ),
                       ),
                       SizedBox(
@@ -402,7 +397,8 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                                 GestureDetector(
                                   onTap: () {},
                                   child: Container(
-                                    padding: const EdgeInsets.all(10),
+                                    padding: const EdgeInsets.only(
+                                        left: 10, right: 10, top: 5, bottom: 5),
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                         color: Colors.black45,
@@ -418,7 +414,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
                                         color:Colors.black45,
-                                        fontFamily: 'muli',
                                       ),
                                     ),
                                   ),
@@ -434,7 +429,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                         'Casts'.toUpperCase(),
                         style: Theme.of(context).textTheme.caption?.copyWith(
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'muli',
                         ),
                       ),
                       CastsWidget(movie: widget.movie),
@@ -443,7 +437,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                         'Rate Movie'.toUpperCase(),
                         style: Theme.of(context).textTheme.caption?.copyWith(
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'muli',
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -455,15 +448,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                               children: <Widget>[
                                 for(int i=0;i<10;i++)
                                 _buildRateButton(i+1),
-                                // _buildRateButton(2),
-                                // _buildRateButton(3),
-                                // _buildRateButton(4),
-                                // _buildRateButton(5),
-                                // _buildRateButton(6),
-                                // _buildRateButton(7),
-                                // _buildRateButton(8),
-                                // _buildRateButton(9),
-                                // _buildRateButton(10)
                               ],
                             ),
                            const SizedBox(
@@ -490,7 +474,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
                           color: Colors.black45,
-                          fontFamily: 'muli',
                         ),
                       ),
                       const SizedBox(
