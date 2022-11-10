@@ -178,9 +178,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                 height: MediaQuery.of(context).size.height / 2.5,
                 width: double.infinity,
                 fit: BoxFit.cover,
-                placeholder: (context, url) => Platform.isAndroid
-                    ? const CircularProgressIndicator()
-                    : const CupertinoActivityIndicator(),
+                placeholder: (context, url) => const CupertinoActivityIndicator(),
                 errorWidget: (context, url, error) => Container(
                   decoration: const BoxDecoration(
                     image: DecorationImage(
@@ -455,16 +453,17 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> with SuperBase {
                           children: [
                             Row(
                               children: <Widget>[
-                                _buildRateButton(1),
-                                _buildRateButton(2),
-                                _buildRateButton(3),
-                                _buildRateButton(4),
-                                _buildRateButton(5),
-                                _buildRateButton(6),
-                                _buildRateButton(7),
-                                _buildRateButton(8),
-                                _buildRateButton(9),
-                                _buildRateButton(10)
+                                for(int i=0;i<10;i++)
+                                _buildRateButton(i+1),
+                                // _buildRateButton(2),
+                                // _buildRateButton(3),
+                                // _buildRateButton(4),
+                                // _buildRateButton(5),
+                                // _buildRateButton(6),
+                                // _buildRateButton(7),
+                                // _buildRateButton(8),
+                                // _buildRateButton(9),
+                                // _buildRateButton(10)
                               ],
                             ),
                            const SizedBox(

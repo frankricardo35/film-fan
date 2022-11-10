@@ -47,7 +47,7 @@ class _CastsWidgetState extends State<CastsWidget> with SuperBase {
 
   @override
   Widget build(BuildContext context) {
-    return isLoading?loadBox():SizedBox(
+    return isLoading?Center(child: loadBox()):SizedBox(
       height: 140,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,

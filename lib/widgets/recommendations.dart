@@ -53,7 +53,7 @@ class _RecommendationsState extends State<Recommendations> with SuperBase {
 
   @override
   Widget build(BuildContext context) {
-    return isLoadingMovieList?loadBox():SizedBox(
+    return isLoadingMovieList?Center(child: loadBox()):SizedBox(
       height: 300,
       child: ListView.separated(
         separatorBuilder: (context, index) => const VerticalDivider(

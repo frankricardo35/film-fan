@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SuperBase{
 
   final String baseUrl = 'https://api.themoviedb.org/3';
-  final String apiKey = 'api_key=<your_api_key>';
+  final String apiKey = 'api_key=abb567a3b20034b814a0c424bd06a3cb';
 
   static String sessionId='';
   static String youtubeTrailerId='';
@@ -29,7 +29,9 @@ class SuperBase{
     try {
       json.decode(jsonString);
       decodeSucceeded = true;
-    } on FormatException {}
+    } on FormatException {
+      decodeSucceeded = false;
+    }
     return decodeSucceeded;
   }
 
@@ -65,19 +67,19 @@ class SuperBase{
   Future<void> ajax(
       {required String url,
         required BuildContext context,
-        String method: "GET",
+        String method ="GET",
         FormData? data,
         Map<String, dynamic>? map,
-        bool server: true,
-        bool auth: true,
-        bool local: false,
-        bool base2: false,
+        bool server= true,
+        bool auth= true,
+        bool local= false,
+        bool base2= false,
         String? authKey,
-        bool json: true,
+        bool json= true,
         void Function(CancelToken token)? onCancelToken,
-        bool absolutePath: false,
-        ResponseType responseType: ResponseType.json,
-        bool localSave: false,
+        bool absolutePath= false,
+        ResponseType responseType= ResponseType.json,
+        bool localSave= false,
         String? jsonData,
         void Function(dynamic response, String url)? onValue,
         void Function()? onEnd,

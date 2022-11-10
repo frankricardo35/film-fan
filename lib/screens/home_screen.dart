@@ -1,5 +1,6 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/Super_base.dart';
@@ -59,8 +60,8 @@ class _HomeScreenState extends State<HomeScreen> with SuperBase {
         favouriteMovies.add(Movie.fromJson(e));
         return Movie.fromJson(e);
       }).toList();
-      var _store = Provider.of<FavouriteProvider>(context, listen: false);
-      _store.setFavouriteMovies(favouriteMovies);
+      var store = Provider.of<FavouriteProvider>(context, listen: false);
+      store.setFavouriteMovies(favouriteMovies);
     }
   }
 

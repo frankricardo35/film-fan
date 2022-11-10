@@ -19,18 +19,18 @@ class MovieItem extends StatelessWidget {
         child: Stack(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(5),
               child: CachedNetworkImage(
                 imageUrl:
                 "https://image.tmdb.org/t/p/w500/${movie.posterPath}",
-                height: 200,
+                height: 220,
                 width: double.infinity,
                 fit: BoxFit.cover,
                 placeholder: (context, url) =>
                 const CupertinoActivityIndicator(),
                 errorWidget: (context, url, error) =>
                     Container(
-                      height: 200,
+                      height: 220,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(
@@ -49,7 +49,7 @@ class MovieItem extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.6),
-                      borderRadius: const BorderRadius.only(bottomRight: Radius.circular(20),bottomLeft: Radius.circular(20)),
+                      borderRadius: const BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
                     ),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
